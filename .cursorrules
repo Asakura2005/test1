@@ -1,0 +1,13 @@
+# Quy Tắc Toàn Dự Án - Bánh Tráng Cô Út Landing Page
+
+## 1. QUY TẮC GIT & DEPLOY (BẮT BUỘC TUYỆT ĐỐI)
+- TUYỆT ĐỐI KHÔNG TỰ Ý CHẠY `git push` hoặc `git push -f` LÊN GITHUB HOẶC BẤT KỲ REMOTE NÀO.
+- Chỉ được phép push khi người dùng ra lệnh trực tiếp và rõ ràng (ví dụ: "push", "deploy", "đẩy lên git", "đẩy lên github").
+- Mọi chỉnh sửa code, fix bug, refactor, kiểm tra build chỉ được thực hiện ở Local.
+- Khi hoàn thành công việc, thông báo cho người dùng và chờ chỉ thị tiếp theo.
+
+## 2. HỒ SƠ PHÁP LÝ (LegalFlipbook & legalDocuments.js)
+- Chuẩn chính xác 26 trang (13 cặp trang lật đối xứng).
+- Tuyệt đối KHÔNG có trang chứng nhận F3 Food (Bắc Ninh).
+- Cặp trang 1-2 là HACCP và ISO 22000 chính chủ Cô Út.
+- Cặp trang 3-4 là bộ kiểm nghiệm VNTEST.

@@ -1,90 +1,129 @@
 import React, { useState } from 'react';
 import HeaderNav from './components/HeaderNav';
-import CroHero from './components/CroHero';
-import FlavorTrio from './components/FlavorTrio';
-import RiskAndTrust from './components/RiskAndTrust';
-import ComboPricing from './components/ComboPricing';
-import OrderFormLead from './components/OrderFormLead';
-import LifestyleOccasions from './components/LifestyleOccasions';
-import SocialProofAndFaq from './components/SocialProofAndFaq';
-import FinalOrderCta from './components/FinalOrderCta';
-import EnterpriseFooter from './components/EnterpriseFooter';
+import HeroProduct from './components/HeroProduct';
+import ComboSelector from './components/ComboSelector';
+import GiftsSection from './components/GiftsSection';
+import ProductFeatures from './components/ProductFeatures';
+import ProductSpecs from './components/ProductSpecs';
+import FastOrderForm from './components/FastOrderForm';
+import SafetySection from './components/SafetySection';
+import ReviewsSection from './components/ReviewsSection';
+import FaqSection from './components/FaqSection';
+import FooterSection from './components/FooterSection';
 import StickyBottomBar from './components/StickyBottomBar';
 import OrderModal from './components/OrderModal';
+import { PRODUCT_DATA } from './data/productData';
 
 export default function App() {
-  const [selectedCombo, setSelectedCombo] = useState('combo_da_nhan_cach');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState(PRODUCT_DATA.variants[1]); // Combo Đa Nhân Cách (Best Seller)
+  const [quantity, setQuantity] = useState(1);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 
-  const handleSelectCombo = (comboId) => {
-    setSelectedCombo(comboId);
-  };
+  const currentPrice = selectedVariant?.price || PRODUCT_DATA.hero.price;
+  const originalPrice = selectedVariant?.originalPrice || PRODUCT_DATA.hero.originalPrice;
 
-  const handleOpenModal = (comboId) => {
-    if (comboId) setSelectedCombo(comboId);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const handleOpenOrderModal = () => setIsOrderModalOpen(true);
+  const handleCloseOrderModal = () => setIsOrderModalOpen(false);
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface flex flex-col font-sans antialiased selection:bg-secondary-container selection:text-white">
-      {/* 1. Header & Live Flash Sale Bar */}
-      <HeaderNav />
+    <div className="min-h-screen bg-surface font-body-md text-on-surface flex flex-col antialiased">
+      {/* ─── FIXED HEADER ─── */}
+      <HeaderNav onOpenOrderModal={handleOpenOrderModal} />
 
-      {/* Main Funnel Flow */}
-      <main className="flex-grow w-full">
-        {/* 2. Hero Section */}
-        <CroHero onSelectPlan={handleSelectCombo} />
+      {/* ─── MAIN CONTENT (AIDA Funnel Flow) ─── */}
+      <main id="main-content" className="flex-1 pt-[104px] pb-24 lg:pb-28 flex flex-col">
+        <div className="max-w-screen-xl mx-auto w-full flex flex-col">
 
-        {/* 3. 3 Signature Flavors & Collection Banner */}
-        <FlavorTrio onSelectPlan={handleSelectCombo} />
+          {/* ═══════════════════════════════════════════
+              STAGE 1: ATTENTION — Thu hút ánh nhìn
+              ═══════════════════════════════════════════ */}
+          {/* Hero: Ảnh sản phẩm + Giá shock + Flash Sale + Rating */}
+          <HeroProduct selectedVariant={selectedVariant} onOpenOrderModal={handleOpenOrderModal} />
 
-        {/* 4. Risk Reversal & Safety Credentials */}
-        <RiskAndTrust />
+          {/* ═══════════════════════════════════════════
+              STAGE 2: INTEREST — Tạo hứng thú
+              ═══════════════════════════════════════════ */}
+          {/* Features: 3 điểm nổi bật — giải thích TẠI SAO sản phẩm đặc biệt */}
+          <div className="mt-3 lg:mt-6">
+            <ProductFeatures />
+          </div>
 
-        {/* 5. Combo Pricing & 30s Fast Order Form */}
-        <ComboPricing
-          selectedCombo={selectedCombo}
-          onSelectCombo={handleSelectCombo}
-          onOpenOrderModal={handleOpenModal}
-        />
-        <OrderFormLead
-          selectedCombo={selectedCombo}
-          onSelectCombo={handleSelectCombo}
-        />
+          {/* ═══════════════════════════════════════════
+              STAGE 3: DESIRE — Khao khát mua
+              ═══════════════════════════════════════════ */}
+          {/* Combo Selector: Chọn variant SAU khi đã hiểu sản phẩm */}
+          <div className="mt-3 lg:mt-6">
+            <ComboSelector
+              selectedVariant={selectedVariant}
+              onSelectVariant={setSelectedVariant}
+              quantity={quantity}
+              onChangeQuantity={setQuantity}
+              onOpenOrderModal={handleOpenOrderModal}
+            />
+          </div>
 
-        {/* 6. Lifestyle Occasions & 4-Step Guide */}
-        <LifestyleOccasions />
+          {/* Safety: Trust signal — chứng minh an toàn TRƯỚC khi yêu cầu mua */}
+          <div className="mt-3 lg:mt-6">
+            <SafetySection />
+          </div>
 
-        {/* 7. Social Proof Reviews & FAQ */}
-        <SocialProofAndFaq />
+          {/* Reviews: Social proof — người khác đã mua và hài lòng */}
+          <div className="mt-3 lg:mt-6">
+            <ReviewsSection />
+          </div>
 
-        {/* 8. Final Conversion CTA Order Form */}
-        <FinalOrderCta
-          selectedCombo={selectedCombo}
-          onSelectCombo={handleSelectCombo}
-        />
+          {/* ═══════════════════════════════════════════
+              STAGE 4: ACTION — Chốt đơn hàng
+              ═══════════════════════════════════════════ */}
+          {/* Gifts: Quà tặng kích thích — ngay TRƯỚC form */}
+          <div className="mt-3 lg:mt-6">
+            <GiftsSection />
+          </div>
+
+          {/* Order Form: Form đặt hàng — ngay SAU quà tặng */}
+          <div className="mt-0">
+            <FastOrderForm
+              selectedVariant={selectedVariant}
+              quantity={quantity}
+            />
+          </div>
+
+          {/* ═══════════════════════════════════════════
+              STAGE 5: REASSURE — Giải đáp phân vân
+              ═══════════════════════════════════════════ */}
+          {/* Specs: Bảng thành phần chi tiết cho rational buyers */}
+          <div className="mt-3 lg:mt-6">
+            <ProductSpecs />
+          </div>
+
+          {/* FAQ: Câu hỏi thường gặp + CTA cuối cùng */}
+          <div className="mt-3 lg:mt-6">
+            <FaqSection />
+          </div>
+        </div>
       </main>
 
-      {/* 9. Enterprise Footer */}
-      <EnterpriseFooter />
+      {/* ─── FOOTER (ngoài main, semantic đúng) ─── */}
+      <FooterSection />
 
-      {/* 10. Sticky Bottom CTA Bar */}
+      {/* ─── STICKY BOTTOM BAR (Hiển thị cố định trên mọi màn hình) ─── */}
       <StickyBottomBar
-        selectedCombo={selectedCombo}
-        onSelectPlan={handleSelectCombo}
-        onOpenOrderModal={handleOpenModal}
+        currentPrice={currentPrice}
+        originalPrice={originalPrice}
+        selectedVariant={selectedVariant}
+        quantity={quantity}
+        onOpenOrderModal={handleOpenOrderModal}
       />
 
-      {/* 11. Quick Order Popup Modal */}
+      {/* ─── CỬA SỔ POPUP ĐẶT HÀNG NHANH (ORDER MODAL) ─── */}
       <OrderModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        selectedCombo={selectedCombo}
-        onSelectCombo={handleSelectCombo}
+        isOpen={isOrderModalOpen}
+        onClose={handleCloseOrderModal}
+        selectedCombo={selectedVariant?.id}
+        onSelectCombo={(comboId) => {
+          const v = PRODUCT_DATA.variants.find((x) => x.id === comboId);
+          if (v) setSelectedVariant(v);
+        }}
       />
     </div>
   );

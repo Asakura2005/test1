@@ -4,82 +4,139 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // Orange Primary Theme Tokens (Warm, Appetizing, Snack-Optimized)
-        primary: '#EA580C',              // Vibrant Orange
-        'primary-container': '#C2410C',    // Deep Rich Orange
-        'primary-dark': '#9A3412',         // Dark Terracotta
-        'primary-fixed': '#FFEDD5',        // Soft Orange Cream
-        'on-primary': '#FFFFFF',
-        'on-primary-container': '#FFF7ED',
-        
-        secondary: '#C2410C',
-        'secondary-container': '#F97316',  // Fiery Golden Orange
-        'secondary-fixed': '#FFEDD5',
-        'secondary-fixed-dim': '#FED7AA',
-        'secondary-fixed-variant': '#7C2D12',
-        'on-secondary': '#FFFFFF',
-        'on-secondary-container': '#7C2D12',
-        
-        error: '#DC2626',
-        'error-container': '#FEE2E2',
-        'on-error': '#FFFFFF',
-        
-        // Warm Culinary Cream Backgrounds
-        surface: '#FAF8F5',
-        'surface-bright': '#FFFFFF',
-        'surface-container-low': '#F4EFE6',
-        'surface-container': '#EAE2D5',
-        'surface-container-high': '#E0D6C5',
-        'surface-container-highest': '#D4C7B3',
-        'surface-container-lowest': '#FFFFFF',
-        'surface-variant': '#EFE9DE',
-        
-        'on-surface': '#1C1917',
-        'on-surface-variant': '#57534E',
-        outline: '#78716C',
-        'outline-variant': '#D6D3D1',
+        // Material 3 Red Primary System (Stitch Design Token)
+        "primary": "#b70011",
+        "primary-container": "#dc2626",
+        "primary-fixed": "#ffdad6",
+        "primary-fixed-dim": "#ffb4ab",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#fff6f5",
+        "on-primary-fixed": "#410002",
+        "on-primary-fixed-variant": "#93000b",
 
-        // Brand accents
-        haq: {
-          bg: '#FAF8F5',
-          paper: '#F4EFE6',
-          surface: '#FFFFFF',
-          charcoal: '#1C1917',
-          orange: '#EA580C',
-          gold: '#E59819',
-          red: '#DC2626'
-        }
+        // Secondary System (Warm Orange)
+        "secondary": "#a73a00",
+        "secondary-container": "#fd651e",
+        "secondary-fixed": "#ffdbce",
+        "secondary-fixed-dim": "#ffb599",
+        "on-secondary": "#ffffff",
+        "on-secondary-container": "#571a00",
+        "on-secondary-fixed": "#370e00",
+        "on-secondary-fixed-variant": "#7f2b00",
+
+        // Tertiary System (Blue Accent)
+        "tertiary": "#005e8d",
+        "tertiary-container": "#0078b2",
+        "tertiary-fixed": "#cbe6ff",
+        "tertiary-fixed-dim": "#90cdff",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-container": "#f3f8ff",
+        "on-tertiary-fixed": "#001e30",
+        "on-tertiary-fixed-variant": "#004b71",
+
+        // Error System
+        "error": "#ba1a1a",
+        "error-container": "#ffdad6",
+        "on-error": "#ffffff",
+        "on-error-container": "#93000a",
+
+        // Surface System (Warm Peach Tones)
+        "surface": "#fff8f7",
+        "surface-bright": "#fff8f7",
+        "surface-dim": "#f3d3cf",
+        "surface-tint": "#bf0715",
+        "surface-variant": "#fbdbd7",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-low": "#fff0ee",
+        "surface-container": "#ffe9e6",
+        "surface-container-high": "#ffe2de",
+        "surface-container-highest": "#fbdbd7",
+        "on-surface": "#281715",
+        "on-surface-variant": "#5c403c",
+        "on-background": "#281715",
+        "background": "#fff8f7",
+
+        // Outline System
+        "outline": "#916f6b",
+        "outline-variant": "#e6bdb8",
+
+        // Inverse System
+        "inverse-surface": "#3f2c29",
+        "inverse-on-surface": "#ffedea",
+        "inverse-primary": "#ffb4ab",
+
+        // Brand Accent Colors
+        "golden-sesame": "#EAB308",
+        "amber-honey": "#F59E0B",
+        "chili-crimson": "#B91C1C",
+        "fiery-red": "#E11D48",
+        "sauce-border": "#FED7AA",
+        "peach-tint": "#FFEDD5",
+        "butter-glow": "#FFFBEB",
+        "charcoal-ink": "#1C1917",
+        "warm-cream": "#FAF8F5",
+      },
+      borderRadius: {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        "full": "9999px"
+      },
+      spacing: {
+        "space-xs": "0.25rem",
+        "space-sm": "0.5rem",
+        "space-md": "1rem",
+        "space-lg": "1.5rem",
+        "space-xl": "2.5rem",
+        "gutter": "1rem",
+        "gutter-desktop": "1.5rem",
+        "margin": "1rem",
+        "margin-desktop": "2rem",
       },
       fontFamily: {
-        sans: ['"Be Vietnam Pro"', 'sans-serif'],
-        heading: ['"Be Vietnam Pro"', 'sans-serif'],
-        'display-hero': ['"Be Vietnam Pro"', 'sans-serif'],
-        'headline-xl': ['"Be Vietnam Pro"', 'sans-serif'],
-        'headline-lg': ['"Be Vietnam Pro"', 'sans-serif'],
-        'headline-sm': ['"Be Vietnam Pro"', 'sans-serif'],
-        'body-lg': ['"Be Vietnam Pro"', 'sans-serif'],
-        'body-md': ['"Be Vietnam Pro"', 'sans-serif'],
-        'body-sm': ['"Be Vietnam Pro"', 'sans-serif'],
-        'label-badge': ['"Be Vietnam Pro"', 'sans-serif'],
-        'label-button': ['"Be Vietnam Pro"', 'sans-serif'],
-        'label-eyebrow': ['"Be Vietnam Pro"', 'sans-serif'],
-        'metric-number': ['"Be Vietnam Pro"', 'sans-serif']
+        "sans": ['"Be Vietnam Pro"', 'system-ui', '-apple-system', 'sans-serif'],
+        "heading": ['"Be Vietnam Pro"', 'sans-serif'],
+        "label-md": ['"Be Vietnam Pro"'],
+        "body-md": ['"Be Vietnam Pro"'],
+        "headline-lg": ['"Be Vietnam Pro"'],
+        "label-sm": ['"Be Vietnam Pro"'],
+        "headline-xl-mobile": ['"Be Vietnam Pro"'],
+        "headline-xl": ['"Be Vietnam Pro"'],
+        "headline-md": ['"Be Vietnam Pro"'],
+        "label-lg": ['"Be Vietnam Pro"'],
+        "headline-sm": ['"Be Vietnam Pro"'],
+        "body-lg": ['"Be Vietnam Pro"'],
+        "body-sm": ['"Be Vietnam Pro"'],
+        "headline-lg-mobile": ['"Be Vietnam Pro"'],
+      },
+      fontSize: {
+        "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "800" }],
+        "label-md": ["13px", { lineHeight: "18px", letterSpacing: "0.03em", fontWeight: "700" }],
+        "label-lg": ["16px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }],
+        "title-sm": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+        "title-md": ["16px", { lineHeight: "24px", letterSpacing: "0.01em", fontWeight: "600" }],
+        "title-lg": ["22px", { lineHeight: "28px", fontWeight: "600" }],
+        "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+        "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "700" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "700" }],
+        "headline-lg-mobile": ["22px", { lineHeight: "28px", fontWeight: "700" }],
+        "headline-xl": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "800" }],
+        "headline-xl-mobile": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "800" }],
       },
       boxShadow: {
-        'warm-sm': '0 1px 2px 0 rgba(28, 25, 23, 0.05)',
-        'warm-md': '0 4px 6px -1px rgba(28, 25, 23, 0.07), 0 2px 4px -2px rgba(28, 25, 23, 0.05)',
-        'warm-lg': '0 10px 15px -3px rgba(28, 25, 23, 0.08), 0 4px 6px -4px rgba(28, 25, 23, 0.04)',
-        'warm-xl': '0 20px 25px -5px rgba(28, 25, 23, 0.1), 0 8px 10px -6px rgba(28, 25, 23, 0.04)',
-        'glow-red': '0 0 25px -5px rgba(220, 38, 38, 0.35)',
-        'glow-green': '0 0 25px -5px rgba(21, 128, 61, 0.35)',
-        'glow-amber': '0 0 25px -5px rgba(217, 119, 6, 0.3)',
+        'warm-sm': '0 1px 2px rgba(185, 28, 28, 0.05)',
+        'warm-md': '0 4px 6px -1px rgba(185, 28, 28, 0.08)',
+        'warm-lg': '0 10px 15px -3px rgba(185, 28, 28, 0.1)',
       },
-      backgroundImage: {
-        'warm-radial': 'radial-gradient(circle at 50% 0%, var(--tw-gradient-stops))',
-      }
     },
   },
   plugins: [],
